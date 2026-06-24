@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | M UMAR Natural Remedies</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          herb: { 50:'#f0f7f2',100:'#dcebe1',200:'#b9d7c3',300:'#8fc0a1',400:'#5fa379',500:'#2f7a4e',600:'#296844',700:'#1f5236',800:'#16402a',900:'#0d2e1d' },
+          gold: { 50:'#fdf9ec',100:'#f8eec7',200:'#f0dc94',300:'#e7c75d',400:'#dcae33',500:'#c9971f',600:'#a8801f',700:'#82601a',800:'#5c4012',900:'#3a2a0d' }
+        },
+        fontFamily: { display: ['Playfair Display','serif'], body: ['Poppins','sans-serif'] }
+      }
+    }
+  }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="font-body bg-cream">
+
+<div class="flex min-h-screen">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="hidden lg:flex flex-col w-72 bg-herb-900 text-white/80 px-6 py-8">
+    <a href="{{ url_for('index') }}" class="flex items-center gap-3 mb-10">
+      <div class="w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-herb-900 font-display font-bold text-lg shadow-lg">MU</div>
+      <div class="leading-tight">
+        <p class="font-display text-white font-semibold">M UMAR</p>
+        <p class="text-gold-300 text-[11px] tracking-widest uppercase">Admin Panel</p>
+      </div>
+    </a>
+
+    <nav class="flex flex-col gap-2">
+      <a href="{{ url_for('admin') }}" class="admin-sidebar-link active flex items-center gap-3 px-4 py-3 rounded-xl text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Dashboard
+      </a>
+      <a href="{{ url_for('admin_products') }}" class="admin-sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/80">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m8 4L4 7m8 4v10M4 7v10l8 4"/></svg>
+        Manage Products
+      </a>
+      <a href="{{ url_for('index') }}" target="_blank" class="admin-sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/80">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6v6M10 14L20 4"/></svg>
+        View Website
+      </a>
+      <a href="{{ url_for('logout') }}" class="admin-sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/80 mt-auto">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        Logout
+      </a>
+    </nav>
+
+    <p class="text-white/40 text-xs mt-10">Logged in as <span class="text-gold-300">{{ session.get('admin_username', 'admin') }}</span></p>
+  </aside>
+
+  <!-- ===================== MOBILE TOP BAR ===================== -->
+  <div class="lg:hidden fixed top-0 left-0 w-full bg-herb-900 z-50 px-6 py-4 flex items-center justify-between">
+    <a href="{{ url_for('index') }}" class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-herb-900 font-display font-bold text-sm">MU</div>
+      <p class="font-display text-white font-semibold text-sm">Admin Panel</p>
+    </a>
+    <div class="flex items-center gap-3">
+      <a href="{{ url_for('admin_products') }}" class="text-gold-300 text-sm font-medium">Products</a>
+      <a href="{{ url_for('logout') }}" class="text-white/80 text-sm font-medium">Logout</a>
+    </div>
+  </div>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main class="flex-1 px-6 lg:px-10 py-8 lg:py-10 pt-24 lg:pt-10">
+    <div class="flex items-center justify-between mb-8" data-aos="fade-up">
+      <div>
+        <p class="section-tag mb-2">Welcome back</p>
+        <h1 class="font-display text-3xl font-bold text-herb-900">Admin Dashboard</h1>
+      </div>
+      <a href="{{ url_for('add_product') }}" class="btn-gold hidden md:inline-block px-6 py-3 rounded-full text-sm font-semibold">+ Add New Product</a>
+    </div>
+
+    <!-- FLASH MESSAGES -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="space-y-3 mb-8">
+      {% for category, message in messages %}
+      <div class="flash-message rounded-xl px-5 py-4 text-sm font-medium {{ 'bg-red-50 text-red-700 border border-red-200' if category == 'error' else 'bg-herb-50 text-herb-800 border border-herb-200' }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- STATS CARDS -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 mb-10">
+      <div class="stat-card bg-white p-7 flex items-center gap-5" data-aos="fade-up" data-aos-delay="0">
+        <div class="icon-badge">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m8 4L4 7m8 4v10M4 7v10l8 4"/></svg>
+        </div>
+        <div>
+          <p class="text-gray-500 text-sm">Total Products</p>
+          <p class="font-display text-3xl font-bold text-herb-900">{{ total_products }}</p>
+        </div>
+      </div>
+
+      <div class="stat-card bg-white p-7 flex items-center gap-5" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon-badge">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <div>
+          <p class="text-gray-500 text-sm">Total Appointments</p>
+          <p class="font-display text-3xl font-bold text-herb-900">{{ total_appointments }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- APPOINTMENTS TABLE -->
+    <div class="card-premium p-0 overflow-hidden" data-aos="fade-up">
+      <div class="px-7 py-5 border-b border-gray-100 flex items-center justify-between">
+        <h2 class="font-display text-xl font-semibold text-herb-900">Appointment Bookings</h2>
+        <span class="text-sm text-gray-500">{{ total_appointments }} total</span>
+      </div>
+
+      {% if appointments|length == 0 %}
+      <p class="text-center text-gray-500 py-16">No appointments have been booked yet.</p>
+      {% else %}
+      <div class="overflow-x-auto">
+        <table class="admin-table w-full text-sm">
+          <thead>
+            <tr>
+              <th class="px-6 py-4 text-left">#</th>
+              <th class="px-6 py-4 text-left">Name</th>
+              <th class="px-6 py-4 text-left">Phone</th>
+              <th class="px-6 py-4 text-left">Email</th>
+              <th class="px-6 py-4 text-left">Service</th>
+              <th class="px-6 py-4 text-left">Date</th>
+              <th class="px-6 py-4 text-left">Time</th>
+              <th class="px-6 py-4 text-left">Notes</th>
+              <th class="px-6 py-4 text-left">Submitted</th>
+              <th class="px-6 py-4 text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {% for appt in appointments %}
+            <tr>
+              <td class="px-6 py-4 text-gray-500">{{ appt['id'] }}</td>
+              <td class="px-6 py-4 font-medium text-herb-900">{{ appt['name'] }}</td>
+              <td class="px-6 py-4"><a href="tel:{{ appt['phone'] }}" class="hover:text-gold-600">{{ appt['phone'] }}</a></td>
+              <td class="px-6 py-4">{{ appt['email'] if appt['email'] else '—' }}</td>
+              <td class="px-6 py-4">{{ appt['service'] if appt['service'] else '—' }}</td>
+              <td class="px-6 py-4">{{ appt['preferred_date'] if appt['preferred_date'] else '—' }}</td>
+              <td class="px-6 py-4">{{ appt['preferred_time'] if appt['preferred_time'] else '—' }}</td>
+              <td class="px-6 py-4 max-w-xs truncate" title="{{ appt['message'] }}">{{ appt['message'] if appt['message'] else '—' }}</td>
+              <td class="px-6 py-4 text-gray-500 whitespace-nowrap">{{ appt['created_at'] }}</td>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-2">
+                  <a href="https://wa.me/{{ appt['phone']|replace('+','')|replace(' ','') }}" target="_blank" rel="noopener" class="text-herb-700 hover:text-herb-900" title="Message on WhatsApp">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.49-1.2L3 21l1.2-3.51A8.96 8.96 0 013 12c0-4.97 4.03-9 9-9s9 4.03 9 9z"/></svg>
+                  </a>
+                  <form method="POST" action="{{ url_for('delete_appointment', appointment_id=appt['id']) }}" class="confirm-delete" data-label="this appointment">
+                    <button type="submit" class="text-red-500 hover:text-red-700" title="Delete appointment">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+    </div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

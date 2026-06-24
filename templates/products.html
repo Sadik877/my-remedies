@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Products | M UMAR Natural Remedies</title>
+<meta name="description" content="Browse the full range of traditional herbal remedies and natural wellness products from M UMAR Natural Remedies, Kano, Nigeria.">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          herb: { 50:'#f0f7f2',100:'#dcebe1',200:'#b9d7c3',300:'#8fc0a1',400:'#5fa379',500:'#2f7a4e',600:'#296844',700:'#1f5236',800:'#16402a',900:'#0d2e1d' },
+          gold: { 50:'#fdf9ec',100:'#f8eec7',200:'#f0dc94',300:'#e7c75d',400:'#dcae33',500:'#c9971f',600:'#a8801f',700:'#82601a',800:'#5c4012',900:'#3a2a0d' }
+        },
+        fontFamily: { display: ['Playfair Display','serif'], body: ['Poppins','sans-serif'] }
+      }
+    }
+  }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="font-body bg-cream">
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="navbar fixed top-0 left-0 w-full z-50 scrolled">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-20">
+      <a href="{{ url_for('index') }}" class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-herb-900 font-display font-bold text-lg shadow-lg">MU</div>
+        <div class="leading-tight">
+          <p class="font-display text-white text-lg font-semibold">M UMAR</p>
+          <p class="text-gold-300 text-[11px] tracking-widest uppercase">Natural Remedies</p>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="{{ url_for('index') }}#about" class="nav-link text-white/90 hover:text-gold-300 text-sm font-medium">About</a>
+        <a href="{{ url_for('index') }}#services" class="nav-link text-white/90 hover:text-gold-300 text-sm font-medium">Services</a>
+        <a href="{{ url_for('products') }}" class="nav-link active text-white/90 hover:text-gold-300 text-sm font-medium">Products</a>
+        <a href="{{ url_for('index') }}#testimonials" class="nav-link text-white/90 hover:text-gold-300 text-sm font-medium">Testimonials</a>
+        <a href="{{ url_for('index') }}#contact" class="nav-link text-white/90 hover:text-gold-300 text-sm font-medium">Contact</a>
+        <a href="{{ url_for('contact') }}" class="btn-gold px-5 py-2.5 rounded-full text-sm">Book Appointment</a>
+      </div>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+        <svg id="icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu lg:hidden bg-herb-900 border-t border-white/10">
+    <div class="px-6 py-4 flex flex-col gap-4">
+      <a href="{{ url_for('index') }}#about" class="text-white/90 text-sm font-medium">About</a>
+      <a href="{{ url_for('index') }}#services" class="text-white/90 text-sm font-medium">Services</a>
+      <a href="{{ url_for('products') }}" class="text-white/90 text-sm font-medium">Products</a>
+      <a href="{{ url_for('index') }}#testimonials" class="text-white/90 text-sm font-medium">Testimonials</a>
+      <a href="{{ url_for('index') }}#contact" class="text-white/90 text-sm font-medium">Contact</a>
+      <a href="{{ url_for('contact') }}" class="btn-gold text-center px-5 py-2.5 rounded-full text-sm">Book Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== PAGE HEADER ===================== -->
+<section class="hero-section pt-40 pb-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 text-center" data-aos="fade-up">
+    <p class="section-tag text-gold-300 mb-3">Shop Natural Remedies</p>
+    <h1 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Our Products</h1>
+    <p class="text-white/80 max-w-2xl mx-auto">Every product is prepared using traditional methods and natural ingredients. Order directly on WhatsApp — fast, simple, and personal.</p>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTS GRID ===================== -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    {% if products|length == 0 %}
+    <div class="text-center py-20" data-aos="fade-up">
+      <p class="text-gray-500 text-lg">No products available yet. Please check back soon!</p>
+    </div>
+    {% else %}
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for product in products %}
+      <div class="card-premium overflow-hidden" data-aos="fade-up" data-aos-delay="{{ (loop.index0 % 6) * 80 }}">
+        <div class="h-56 w-full overflow-hidden">
+          {% if product['image'] %}
+          <img src="{{ url_for('static', filename='uploads/' + product['image']) }}" alt="{{ product['name'] }}" class="w-full h-full object-cover">
+          {% else %}
+          <div class="product-image-placeholder w-full h-full flex items-center justify-center">
+            <svg class="w-16 h-16 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2C9 6 4 9 4 14a8 8 0 0016 0c0-5-5-8-8-12z"/></svg>
+          </div>
+          {% endif %}
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-lg font-semibold text-herb-900 mb-2">{{ product['name'] }}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-5">{{ product['description'] }}</p>
+          <div class="flex items-center justify-between gap-3">
+            <span class="font-display text-xl font-bold text-gold-600">₦{{ '{:,.0f}'.format(product['price']) }}</span>
+            <a href="https://wa.me/{{ whatsapp_number }}?text=Hello%20M%20UMAR%20Natural%20Remedies%2C%20I%20would%20like%20to%20order%20{{ product['name']|urlencode }}%20(₦{{ '{:,.0f}'.format(product['price']) }})." target="_blank" rel="noopener" class="btn-gold px-4 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap">Order on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ===================== CTA SECTION ===================== -->
+<section class="py-20 bg-herb-900 text-center relative overflow-hidden">
+  <svg class="leaf-decor w-40 h-40 -top-10 -right-10" viewBox="0 0 100 100" fill="none"><path d="M50 5C30 25 15 45 15 65c0 19 16 30 35 30s35-11 35-30c0-20-15-40-35-60z" fill="#dcae33"/></svg>
+  <div class="max-w-3xl mx-auto px-6 relative z-10" data-aos="fade-up">
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Not Sure What You Need?</h2>
+    <p class="text-white/80 mb-8">Book a free consultation appointment and let us recommend the right natural remedy for you.</p>
+    <a href="{{ url_for('contact') }}" class="btn-gold inline-block px-10 py-4 rounded-full font-semibold">Book an Appointment</a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-herb-900 text-white/80 pt-16 pb-8 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-herb-900 font-display font-bold">MU</div>
+        <p class="font-display text-white font-semibold">M UMAR Natural Remedies</p>
+      </div>
+      <p class="text-sm text-white/60 leading-relaxed">Traditional herbal wellness products and remedies, proudly serving Kano and the wider Northern Nigeria community.</p>
+    </div>
+    <div>
+      <h4 class="font-display text-white font-semibold mb-4">Quick Links</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="{{ url_for('index') }}" class="hover:text-gold-300">Home</a></li>
+        <li><a href="{{ url_for('index') }}#about" class="hover:text-gold-300">About Us</a></li>
+        <li><a href="{{ url_for('products') }}" class="hover:text-gold-300">Products</a></li>
+        <li><a href="{{ url_for('contact') }}" class="hover:text-gold-300">Book Appointment</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-white font-semibold mb-4">Our Services</h4>
+      <ul class="space-y-2 text-sm">
+        <li>Herbal Consultation</li>
+        <li>Custom Remedy Blending</li>
+        <li>Wellness Coaching</li>
+        <li>Home & Office Delivery</li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-white font-semibold mb-4">Contact Us</h4>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-center gap-2"><span>📍</span> {{ business_location }}</li>
+        <li class="flex items-center gap-2"><span>📞</span> {{ phone_number }}</li>
+        <li class="flex items-center gap-2"><span>🟢</span> WhatsApp: {{ phone_number }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10 mt-12 pt-6 text-center text-sm text-white/50">
+    &copy; {{ current_year }} {{ business_name }}. All rights reserved.
+  </div>
+</footer>
+
+<!-- ===================== FLOATING WHATSAPP BUTTON ===================== -->
+<a href="https://wa.me/{{ whatsapp_number }}?text=Hello%20M%20UMAR%20Natural%20Remedies%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <svg class="w-8 h-8 text-white" viewBox="0 0 32 32" fill="currentColor"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.745.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.45-.802 2.752-1.62.114-.302.187-.645.187-.97 0-.143-.43-.302-.617-.387-.215-.1-1.39-.617-1.504-.617zM16.01 27.7c-2.034 0-4.04-.617-5.788-1.733L5.1 27.55l1.62-5.215a10.49 10.49 0 0 1-1.92-6.04c0-5.84 4.755-10.595 10.595-10.595 5.84 0 10.595 4.755 10.595 10.595S22.135 27.7 16.295 27.7h-.286z"/></svg>
+</a>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

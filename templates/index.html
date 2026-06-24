@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M UMAR Natural Remedies | Traditional Herbal Wellness in Kano, Nigeria</title>
+<meta name="description" content="M UMAR Natural Remedies — authentic traditional herbal wellness products and remedies in Kano, Nigeria. Book an appointment or order on WhatsApp today.">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          herb: { 50:'#f0f7f2',100:'#dcebe1',200:'#b9d7c3',300:'#8fc0a1',400:'#5fa379',500:'#2f7a4e',600:'#296844',700:'#1f5236',800:'#16402a',900:'#0d2e1d' },
+          gold: { 50:'#fdf9ec',100:'#f8eec7',200:'#f0dc94',300:'#e7c75d',400:'#dcae33',500:'#c9971f',600:'#a8801f',700:'#82601a',800:'#5c4012',900:'#3a2a0d' }
+        },
+        fontFamily: { display: ['Playfair Display','serif'], body: ['Poppins','sans-serif'] }
+      }
+    }
+  }
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="font-body bg-cream">
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="navbar fixed top-0 left-0 w-full z-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-20">
+      <a href="{{ url_for('index') }}" class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-herb-900 font-display font-bold text-lg shadow-lg">MU</div>
+        <div class="leading-tight">
+          <p class="font-display text-white text-lg font-semibold">M UMAR</p>
+          <p class="text-gold-300 text-[11px] tracking-widest uppercase">Natural Remedies</p>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#about" class="nav-link active text-white/90 hover:text-gold-300 text-sm font-medium">About</a>
+        <a href="#services" class="nav-link text-white/90 hover:text-gold-300 text-sm font-medium">Services</a>
+        <a href="#products" class="nav-link text-white/90 hover:text-gold-300 text-sm font-medium">Products</a>
+        <a href="#testimonials" class="nav-link text-white/90 hover:text-gold-300 text-sm font-medium">Testimonials</a>
+        <a href="#contact" class="nav-link text-white/90 hover:text-gold-300 text-sm font-medium">Contact</a>
+        <a href="{{ url_for('contact') }}" class="btn-gold px-5 py-2.5 rounded-full text-sm">Book Appointment</a>
+      </div>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+        <svg id="icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu lg:hidden bg-herb-900 border-t border-white/10">
+    <div class="px-6 py-4 flex flex-col gap-4">
+      <a href="#about" class="text-white/90 text-sm font-medium">About</a>
+      <a href="#services" class="text-white/90 text-sm font-medium">Services</a>
+      <a href="#products" class="text-white/90 text-sm font-medium">Products</a>
+      <a href="#testimonials" class="text-white/90 text-sm font-medium">Testimonials</a>
+      <a href="#contact" class="text-white/90 text-sm font-medium">Contact</a>
+      <a href="{{ url_for('contact') }}" class="btn-gold text-center px-5 py-2.5 rounded-full text-sm">Book Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO SECTION ===================== -->
+<section class="hero-section min-h-screen flex items-center pt-28 pb-16 relative">
+  <svg class="leaf-decor w-40 h-40 top-24 left-[5%]" viewBox="0 0 100 100" fill="none"><path d="M50 5C30 25 15 45 15 65c0 19 16 30 35 30s35-11 35-30c0-20-15-40-35-60z" fill="#dcae33"/></svg>
+  <svg class="leaf-decor w-28 h-28 bottom-16 right-[8%]" style="animation-delay:2s" viewBox="0 0 100 100" fill="none"><path d="M50 5C30 25 15 45 15 65c0 19 16 30 35 30s35-11 35-30c0-20-15-40-35-60z" fill="#5fa379"/></svg>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 w-full">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-up">
+        <p class="section-tag text-gold-300 mb-4">Authentic Herbal Wellness · Kano, Nigeria</p>
+        <h1 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+          Healing Rooted in <span class="gold-gradient-text">Nature & Tradition</span>
+        </h1>
+        <p class="text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
+          M UMAR Natural Remedies blends generations of traditional herbal knowledge with carefully
+          sourced natural ingredients — bringing trusted wellness remedies to families across Kano and beyond.
+        </p>
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="{{ url_for('contact') }}" class="btn-gold px-8 py-4 rounded-full font-semibold">Book an Appointment</a>
+          <a href="#products" class="btn-outline-gold px-8 py-4 rounded-full font-semibold">Explore Products</a>
+        </div>
+        <div class="flex flex-wrap gap-8">
+          <div>
+            <p class="font-display text-3xl font-bold text-gold-300">100%</p>
+            <p class="text-white/60 text-sm">Natural Ingredients</p>
+          </div>
+          <div>
+            <p class="font-display text-3xl font-bold text-gold-300">1000+</p>
+            <p class="text-white/60 text-sm">Customers Served</p>
+          </div>
+          <div>
+            <p class="font-display text-3xl font-bold text-gold-300">Kano</p>
+            <p class="text-white/60 text-sm">Based & Trusted</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative" data-aos="fade-left" data-aos-delay="150">
+        <div class="rounded-3xl bg-gradient-to-br from-herb-700 to-herb-900 border border-gold-400/20 p-10 shadow-2xl">
+          <div class="grid grid-cols-2 gap-5">
+            <div class="card-premium bg-white/95 rounded-2xl p-5">
+              <div class="icon-badge mb-4">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 2C9 6 4 9 4 14a8 8 0 0016 0c0-5-5-8-8-12z"/></svg>
+              </div>
+              <p class="font-display font-semibold text-herb-900">Pure & Natural</p>
+              <p class="text-xs text-gray-500 mt-1">No harmful chemicals</p>
+            </div>
+            <div class="card-premium bg-white/95 rounded-2xl p-5 mt-8">
+              <div class="icon-badge mb-4">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <p class="font-display font-semibold text-herb-900">Trusted Formulas</p>
+              <p class="text-xs text-gray-500 mt-1">Traditional knowledge</p>
+            </div>
+            <div class="card-premium bg-white/95 rounded-2xl p-5">
+              <div class="icon-badge mb-4">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12h18M3 6h18M3 18h18"/></svg>
+              </div>
+              <p class="font-display font-semibold text-herb-900">Easy Ordering</p>
+              <p class="text-xs text-gray-500 mt-1">Order via WhatsApp</p>
+            </div>
+            <div class="card-premium bg-white/95 rounded-2xl p-5 mt-8">
+              <div class="icon-badge mb-4">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </div>
+              <p class="font-display font-semibold text-herb-900">Book Anytime</p>
+              <p class="text-xs text-gray-500 mt-1">Flexible appointments</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT SECTION ===================== -->
+<section id="about" class="py-24 bg-white bg-pattern-light">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-right">
+        <div class="rounded-3xl bg-gradient-to-br from-herb-800 to-herb-900 p-10 relative overflow-hidden">
+          <svg class="absolute -bottom-8 -right-8 w-48 h-48 opacity-20" viewBox="0 0 100 100" fill="none"><path d="M50 5C30 25 15 45 15 65c0 19 16 30 35 30s35-11 35-30c0-20-15-40-35-60z" fill="#dcae33"/></svg>
+          <p class="font-display text-2xl text-white font-semibold mb-3 relative z-10">"Wellness passed down, prepared with care."</p>
+          <p class="text-white/70 text-sm relative z-10">— The M UMAR Natural Remedies Promise</p>
+          <div class="grid grid-cols-2 gap-4 mt-8 relative z-10">
+            <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+              <p class="text-gold-300 font-display text-2xl font-bold">Hausa</p>
+              <p class="text-white/60 text-xs">& English support</p>
+            </div>
+            <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+              <p class="text-gold-300 font-display text-2xl font-bold">Local</p>
+              <p class="text-white/60 text-xs">Sourced ingredients</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-aos="fade-left">
+        <p class="section-tag mb-4">About Us</p>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-herb-900 mb-4">
+          Trusted Traditional Wellness, <br> Right Here in Kano
+        </h2>
+        <div class="divider-gold mb-6"></div>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          M UMAR Natural Remedies was founded to preserve and share the traditional herbal wellness
+          knowledge cherished across Northern Nigeria. Every remedy we prepare combines time-honored
+          methods with carefully selected natural ingredients — giving our community safe, effective
+          and affordable wellness solutions for everyday life.
+        </p>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-6 h-6 rounded-full bg-herb-700 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-gold-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+            </span>
+            <span class="text-gray-700"><strong class="text-herb-900">Authentic herbal knowledge</strong> passed down through trusted practice.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-6 h-6 rounded-full bg-herb-700 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-gold-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+            </span>
+            <span class="text-gray-700"><strong class="text-herb-900">Naturally sourced</strong> herbs, oils and remedies, prepared with care.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-6 h-6 rounded-full bg-herb-700 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-gold-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+            </span>
+            <span class="text-gray-700"><strong class="text-herb-900">Trusted across Kano</strong>, serving families and individuals for years.</span>
+          </li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="btn-herb inline-block mt-8 px-8 py-3.5 rounded-full font-semibold">Book a Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES SECTION ===================== -->
+<section id="services" class="py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <p class="section-tag mb-3">What We Offer</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-herb-900 mb-4">Our Wellness Services</h2>
+      <div class="divider-gold mx-auto mb-5"></div>
+      <p class="text-gray-600">From personal consultations to custom-prepared remedies, we're here to support your natural wellness journey.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="card-premium p-8" data-aos="fade-up" data-aos-delay="0">
+        <div class="icon-badge mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-2.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-herb-900 mb-2">Herbal Consultation</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">One-on-one consultations to understand your wellness needs and recommend the right natural remedy.</p>
+      </div>
+
+      <div class="card-premium p-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon-badge mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 2C9 6 4 9 4 14a8 8 0 0016 0c0-5-5-8-8-12z"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-herb-900 mb-2">Custom Remedy Blending</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Personalized herbal blends prepared specifically for your health goals and preferences.</p>
+      </div>
+
+      <div class="card-premium p-8" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-badge mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a4 4 0 115.657 0M9 21h6"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-herb-900 mb-2">Wellness Coaching</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Guidance on natural lifestyle habits that complement your herbal wellness routine.</p>
+      </div>
+
+      <div class="card-premium p-8" data-aos="fade-up" data-aos-delay="0">
+        <div class="icon-badge mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 7h18M3 7l2 13h14l2-13M3 7l2-4h14l2 4"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-herb-900 mb-2">Home & Office Delivery</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Convenient delivery of your favorite remedies within Kano, arranged directly via WhatsApp.</p>
+      </div>
+
+      <div class="card-premium p-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon-badge mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-herb-900 mb-2">Traditional Detox Programs</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Guided natural detox programs rooted in traditional herbal practice.</p>
+      </div>
+
+      <div class="card-premium p-8" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-badge mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-herb-900 mb-2">Appointment-Based Treatment</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Book a convenient time for in-person consultation and treatment planning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURED PRODUCTS SECTION ===================== -->
+<section id="products" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <p class="section-tag mb-3">Our Products</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-herb-900 mb-4">Featured Natural Remedies</h2>
+      <div class="divider-gold mx-auto mb-5"></div>
+      <p class="text-gray-600">Carefully prepared herbal products to support your everyday wellness.</p>
+    </div>
+
+    {% if products|length == 0 %}
+    <p class="text-center text-gray-500">Products will appear here soon. Please check back!</p>
+    {% else %}
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for product in products %}
+      <div class="card-premium overflow-hidden" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
+        <div class="h-52 w-full overflow-hidden">
+          {% if product['image'] %}
+          <img src="{{ url_for('static', filename='uploads/' + product['image']) }}" alt="{{ product['name'] }}" class="w-full h-full object-cover">
+          {% else %}
+          <div class="product-image-placeholder w-full h-full flex items-center justify-center">
+            <svg class="w-16 h-16 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2C9 6 4 9 4 14a8 8 0 0016 0c0-5-5-8-8-12z"/></svg>
+          </div>
+          {% endif %}
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-lg font-semibold text-herb-900 mb-2">{{ product['name'] }}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">{{ product['description'] }}</p>
+          <div class="flex items-center justify-between">
+            <span class="font-display text-xl font-bold text-gold-600">₦{{ '{:,.0f}'.format(product['price']) }}</span>
+            <a href="https://wa.me/{{ whatsapp_number }}?text=Hello%20M%20UMAR%20Natural%20Remedies%2C%20I%20would%20like%20to%20order%20{{ product['name']|urlencode }}." target="_blank" rel="noopener" class="btn-gold px-4 py-2 rounded-full text-xs font-semibold">Order on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="text-center mt-14" data-aos="fade-up">
+      <a href="{{ url_for('products') }}" class="btn-herb inline-block px-10 py-4 rounded-full font-semibold">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS SECTION ===================== -->
+<section id="testimonials" class="py-24 bg-herb-900 relative overflow-hidden">
+  <svg class="leaf-decor w-40 h-40 -top-10 -left-10" viewBox="0 0 100 100" fill="none"><path d="M50 5C30 25 15 45 15 65c0 19 16 30 35 30s35-11 35-30c0-20-15-40-35-60z" fill="#dcae33"/></svg>
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 relative z-10">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <p class="section-tag text-gold-300 mb-3">Testimonials</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">What Our Customers Say</h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+
+    <div class="relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="testimonial-slide active">
+        <div class="card-premium bg-white/95 p-10 text-center rounded-2xl">
+          <div class="flex justify-center gap-1 mb-4 text-gold-500">★★★★★</div>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">"The black seed oil from M UMAR has become a staple in our home. Genuine quality and the team is always friendly and patient with questions."</p>
+          <p class="font-display font-semibold text-herb-900">Hauwa Ibrahim</p>
+          <p class="text-gray-500 text-sm">Kano, Nigeria</p>
+        </div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="card-premium bg-white/95 p-10 text-center rounded-2xl">
+          <div class="flex justify-center gap-1 mb-4 text-gold-500">★★★★★</div>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">"Booking an appointment was so easy, and the herbal tea blend they recommended has really helped my digestion. Highly recommended!"</p>
+          <p class="font-display font-semibold text-herb-900">Abdullahi Sani</p>
+          <p class="text-gray-500 text-sm">Kano, Nigeria</p>
+        </div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="card-premium bg-white/95 p-10 text-center rounded-2xl">
+          <div class="flex justify-center gap-1 mb-4 text-gold-500">★★★★★</div>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">"I love that I can order directly on WhatsApp and get a quick response. Their honey and herb mix worked wonders for my cough."</p>
+          <p class="font-display font-semibold text-herb-900">Fatima Yusuf</p>
+          <p class="text-gray-500 text-sm">Kano, Nigeria</p>
+        </div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="card-premium bg-white/95 p-10 text-center rounded-2xl">
+          <div class="flex justify-center gap-1 mb-4 text-gold-500">★★★★★</div>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">"Professional, knowledgeable, and rooted in real traditional practice. The joint relief oil genuinely helped my father's discomfort."</p>
+          <p class="font-display font-semibold text-herb-900">Musa Lawal</p>
+          <p class="text-gray-500 text-sm">Kano, Nigeria</p>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center gap-6 mt-8">
+        <button id="testimonial-prev" class="w-10 h-10 rounded-full border border-gold-400/40 text-gold-300 flex items-center justify-center hover:bg-gold-400 hover:text-herb-900 transition" aria-label="Previous testimonial">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <div class="flex gap-2">
+          <span class="testimonial-dot active"></span>
+          <span class="testimonial-dot"></span>
+          <span class="testimonial-dot"></span>
+          <span class="testimonial-dot"></span>
+        </div>
+        <button id="testimonial-next" class="w-10 h-10 rounded-full border border-gold-400/40 text-gold-300 flex items-center justify-center hover:bg-gold-400 hover:text-herb-900 transition" aria-label="Next testimonial">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT SECTION ===================== -->
+<section id="contact" class="py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <p class="section-tag mb-3">Get In Touch</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-herb-900 mb-4">We're Here to Help</h2>
+      <div class="divider-gold mx-auto mb-5"></div>
+      <p class="text-gray-600">Reach out via phone, WhatsApp, or book a full appointment online.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="card-premium p-8 text-center" data-aos="fade-up" data-aos-delay="0">
+        <div class="icon-badge mx-auto mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 12.414a2 2 0 10-2.828 2.828l4.243 4.243m-4.243-4.243L3 21m9-13a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-herb-900 mb-2">Our Location</h3>
+        <p class="text-gray-600 text-sm">{{ business_location }}</p>
+      </div>
+      <div class="card-premium p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon-badge mx-auto mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-herb-900 mb-2">Call Us</h3>
+        <p class="text-gray-600 text-sm">{{ phone_number }}</p>
+      </div>
+      <div class="card-premium p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-badge mx-auto mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.49-1.2L3 21l1.2-3.51A8.96 8.96 0 013 12c0-4.97 4.03-9 9-9s9 4.03 9 9z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-herb-900 mb-2">WhatsApp Us</h3>
+        <p class="text-gray-600 text-sm">{{ phone_number }}</p>
+      </div>
+    </div>
+
+    <div class="text-center" data-aos="fade-up">
+      <a href="{{ url_for('contact') }}" class="btn-gold inline-block px-10 py-4 rounded-full font-semibold">Book an Appointment</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-herb-900 text-white/80 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-herb-900 font-display font-bold">MU</div>
+        <p class="font-display text-white font-semibold">M UMAR Natural Remedies</p>
+      </div>
+      <p class="text-sm text-white/60 leading-relaxed">Traditional herbal wellness products and remedies, proudly serving Kano and the wider Northern Nigeria community.</p>
+    </div>
+    <div>
+      <h4 class="font-display text-white font-semibold mb-4">Quick Links</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="{{ url_for('index') }}" class="hover:text-gold-300">Home</a></li>
+        <li><a href="#about" class="hover:text-gold-300">About Us</a></li>
+        <li><a href="{{ url_for('products') }}" class="hover:text-gold-300">Products</a></li>
+        <li><a href="{{ url_for('contact') }}" class="hover:text-gold-300">Book Appointment</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-white font-semibold mb-4">Our Services</h4>
+      <ul class="space-y-2 text-sm">
+        <li>Herbal Consultation</li>
+        <li>Custom Remedy Blending</li>
+        <li>Wellness Coaching</li>
+        <li>Home & Office Delivery</li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-white font-semibold mb-4">Contact Us</h4>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-center gap-2"><span>📍</span> {{ business_location }}</li>
+        <li class="flex items-center gap-2"><span>📞</span> {{ phone_number }}</li>
+        <li class="flex items-center gap-2"><span>🟢</span> WhatsApp: {{ phone_number }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10 mt-12 pt-6 text-center text-sm text-white/50">
+    &copy; {{ current_year }} {{ business_name }}. All rights reserved.
+  </div>
+</footer>
+
+<!-- ===================== FLOATING WHATSAPP BUTTON ===================== -->
+<a href="https://wa.me/{{ whatsapp_number }}?text=Hello%20M%20UMAR%20Natural%20Remedies%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <svg class="w-8 h-8 text-white" viewBox="0 0 32 32" fill="currentColor"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.745.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.45-.802 2.752-1.62.114-.302.187-.645.187-.97 0-.143-.43-.302-.617-.387-.215-.1-1.39-.617-1.504-.617zM16.01 27.7c-2.034 0-4.04-.617-5.788-1.733L5.1 27.55l1.62-5.215a10.49 10.49 0 0 1-1.92-6.04c0-5.84 4.755-10.595 10.595-10.595 5.84 0 10.595 4.755 10.595 10.595S22.135 27.7 16.295 27.7h-.286z"/></svg>
+</a>
+
+<!-- AOS Animation JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- Custom JavaScript -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

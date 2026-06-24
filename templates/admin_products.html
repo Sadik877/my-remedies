@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Products | M UMAR Natural Remedies</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          herb: { 50:'#f0f7f2',100:'#dcebe1',200:'#b9d7c3',300:'#8fc0a1',400:'#5fa379',500:'#2f7a4e',600:'#296844',700:'#1f5236',800:'#16402a',900:'#0d2e1d' },
+          gold: { 50:'#fdf9ec',100:'#f8eec7',200:'#f0dc94',300:'#e7c75d',400:'#dcae33',500:'#c9971f',600:'#a8801f',700:'#82601a',800:'#5c4012',900:'#3a2a0d' }
+        },
+        fontFamily: { display: ['Playfair Display','serif'], body: ['Poppins','sans-serif'] }
+      }
+    }
+  }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="font-body bg-cream">
+
+<div class="flex min-h-screen">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="hidden lg:flex flex-col w-72 bg-herb-900 text-white/80 px-6 py-8">
+    <a href="{{ url_for('index') }}" class="flex items-center gap-3 mb-10">
+      <div class="w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-herb-900 font-display font-bold text-lg shadow-lg">MU</div>
+      <div class="leading-tight">
+        <p class="font-display text-white font-semibold">M UMAR</p>
+        <p class="text-gold-300 text-[11px] tracking-widest uppercase">Admin Panel</p>
+      </div>
+    </a>
+
+    <nav class="flex flex-col gap-2">
+      <a href="{{ url_for('admin') }}" class="admin-sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/80">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Dashboard
+      </a>
+      <a href="{{ url_for('admin_products') }}" class="admin-sidebar-link active flex items-center gap-3 px-4 py-3 rounded-xl text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m8 4L4 7m8 4v10M4 7v10l8 4"/></svg>
+        Manage Products
+      </a>
+      <a href="{{ url_for('index') }}" target="_blank" class="admin-sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/80">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6v6M10 14L20 4"/></svg>
+        View Website
+      </a>
+      <a href="{{ url_for('logout') }}" class="admin-sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/80 mt-auto">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        Logout
+      </a>
+    </nav>
+
+    <p class="text-white/40 text-xs mt-10">Logged in as <span class="text-gold-300">{{ session.get('admin_username', 'admin') }}</span></p>
+  </aside>
+
+  <!-- ===================== MOBILE TOP BAR ===================== -->
+  <div class="lg:hidden fixed top-0 left-0 w-full bg-herb-900 z-50 px-6 py-4 flex items-center justify-between">
+    <a href="{{ url_for('index') }}" class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-herb-900 font-display font-bold text-sm">MU</div>
+      <p class="font-display text-white font-semibold text-sm">Admin Panel</p>
+    </a>
+    <div class="flex items-center gap-3">
+      <a href="{{ url_for('admin') }}" class="text-gold-300 text-sm font-medium">Dashboard</a>
+      <a href="{{ url_for('logout') }}" class="text-white/80 text-sm font-medium">Logout</a>
+    </div>
+  </div>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main class="flex-1 px-6 lg:px-10 py-8 lg:py-10 pt-24 lg:pt-10">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8" data-aos="fade-up">
+      <div>
+        <p class="section-tag mb-2">Inventory</p>
+        <h1 class="font-display text-3xl font-bold text-herb-900">Manage Products</h1>
+      </div>
+      <a href="{{ url_for('add_product') }}" class="btn-gold inline-block px-6 py-3 rounded-full text-sm font-semibold">+ Add New Product</a>
+    </div>
+
+    <!-- FLASH MESSAGES -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="space-y-3 mb-8">
+      {% for category, message in messages %}
+      <div class="flash-message rounded-xl px-5 py-4 text-sm font-medium {{ 'bg-red-50 text-red-700 border border-red-200' if category == 'error' else 'bg-herb-50 text-herb-800 border border-herb-200' }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% if products|length == 0 %}
+    <div class="card-premium p-16 text-center" data-aos="fade-up">
+      <p class="text-gray-500 mb-6">You haven't added any products yet.</p>
+      <a href="{{ url_for('add_product') }}" class="btn-gold inline-block px-8 py-3.5 rounded-full font-semibold">Add Your First Product</a>
+    </div>
+    {% else %}
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for product in products %}
+      <div class="card-premium overflow-hidden" data-aos="fade-up" data-aos-delay="{{ (loop.index0 % 6) * 60 }}">
+        <div class="h-44 w-full overflow-hidden">
+          {% if product['image'] %}
+          <img src="{{ url_for('static', filename='uploads/' + product['image']) }}" alt="{{ product['name'] }}" class="w-full h-full object-cover">
+          {% else %}
+          <div class="product-image-placeholder w-full h-full flex items-center justify-center">
+            <svg class="w-12 h-12 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2C9 6 4 9 4 14a8 8 0 0016 0c0-5-5-8-8-12z"/></svg>
+          </div>
+          {% endif %}
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-semibold text-herb-900 mb-1 truncate">{{ product['name'] }}</h3>
+          <p class="text-gray-500 text-xs mb-3 line-clamp-2">{{ product['description'] }}</p>
+          <p class="font-display text-lg font-bold text-gold-600 mb-4">₦{{ '{:,.0f}'.format(product['price']) }}</p>
+          <div class="flex items-center gap-3">
+            <a href="{{ url_for('edit_product', product_id=product['id']) }}" class="flex-1 text-center btn-herb px-4 py-2.5 rounded-full text-xs font-semibold">Edit</a>
+            <form method="POST" action="{{ url_for('delete_product', product_id=product['id']) }}" class="flex-1 confirm-delete" data-label="this product">
+              <button type="submit" class="w-full text-center bg-red-50 text-red-600 border border-red-200 px-4 py-2.5 rounded-full text-xs font-semibold hover:bg-red-100 transition">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </main>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

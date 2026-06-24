@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointment Confirmed | M UMAR Natural Remedies</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          herb: { 50:'#f0f7f2',100:'#dcebe1',200:'#b9d7c3',300:'#8fc0a1',400:'#5fa379',500:'#2f7a4e',600:'#296844',700:'#1f5236',800:'#16402a',900:'#0d2e1d' },
+          gold: { 50:'#fdf9ec',100:'#f8eec7',200:'#f0dc94',300:'#e7c75d',400:'#dcae33',500:'#c9971f',600:'#a8801f',700:'#82601a',800:'#5c4012',900:'#3a2a0d' }
+        },
+        fontFamily: { display: ['Playfair Display','serif'], body: ['Poppins','sans-serif'] }
+      }
+    }
+  }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="font-body bg-cream">
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="navbar fixed top-0 left-0 w-full z-50 scrolled">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-20">
+      <a href="{{ url_for('index') }}" class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-herb-900 font-display font-bold text-lg shadow-lg">MU</div>
+        <div class="leading-tight">
+          <p class="font-display text-white text-lg font-semibold">M UMAR</p>
+          <p class="text-gold-300 text-[11px] tracking-widest uppercase">Natural Remedies</p>
+        </div>
+      </a>
+      <a href="{{ url_for('index') }}" class="btn-gold px-5 py-2.5 rounded-full text-sm">Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== SUCCESS SECTION ===================== -->
+<section class="hero-section min-h-screen flex items-center pt-28 pb-16">
+  <div class="max-w-3xl mx-auto px-6 text-center" data-aos="zoom-in">
+    <div class="w-24 h-24 rounded-full bg-gold-400/15 border-2 border-gold-400 flex items-center justify-center mx-auto mb-8">
+      <svg class="w-12 h-12 text-gold-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <p class="section-tag text-gold-300 mb-3">Request Received</p>
+    <h1 class="font-display text-3xl md:text-5xl font-bold text-white mb-6">Your Appointment Request Was Submitted!</h1>
+    <p class="text-white/80 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+      Thank you for reaching out to {{ business_name }}. Our team will contact you shortly by phone or
+      WhatsApp to confirm your appointment details. If your request is urgent, feel free to message us
+      directly on WhatsApp.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="https://wa.me/{{ whatsapp_number }}?text=Hello%2C%20I%20just%20submitted%20an%20appointment%20request%20on%20your%20website." target="_blank" rel="noopener" class="btn-gold px-8 py-4 rounded-full font-semibold">Message Us on WhatsApp</a>
+      <a href="{{ url_for('index') }}" class="btn-outline-gold px-8 py-4 rounded-full font-semibold">Return to Homepage</a>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <svg class="w-8 h-8 text-white" viewBox="0 0 32 32" fill="currentColor"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.745.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.45-.802 2.752-1.62.114-.302.187-.645.187-.97 0-.143-.43-.302-.617-.387-.215-.1-1.39-.617-1.504-.617zM16.01 27.7c-2.034 0-4.04-.617-5.788-1.733L5.1 27.55l1.62-5.215a10.49 10.49 0 0 1-1.92-6.04c0-5.84 4.755-10.595 10.595-10.595 5.84 0 10.595 4.755 10.595 10.595S22.135 27.7 16.295 27.7h-.286z"/></svg>
+</a>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

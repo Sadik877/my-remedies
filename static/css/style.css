@@ -1,0 +1,389 @@
+/* ==========================================================================
+   M UMAR Natural Remedies — style.css
+   Premium herbal wellness design system (Green & Gold)
+   ========================================================================== */
+
+:root {
+  --herb-900: #0d2e1d;
+  --herb-800: #16402a;
+  --herb-700: #1f5236;
+  --herb-600: #296844;
+  --herb-500: #2f7a4e;
+  --herb-400: #5fa379;
+  --gold-700: #82601a;
+  --gold-600: #a8801f;
+  --gold-500: #c9971f;
+  --gold-400: #dcae33;
+  --gold-300: #e7c75d;
+  --cream: #fbf8f1;
+  --ink: #1c2620;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+.navbar {
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(13, 46, 29, 0.97);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0%;
+  background: var(--gold-400);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.mobile-menu.open {
+  max-height: 500px;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.hero-section {
+  background: radial-gradient(circle at 20% 20%, rgba(217, 175, 51, 0.12), transparent 45%),
+              radial-gradient(circle at 80% 80%, rgba(95, 163, 121, 0.18), transparent 50%),
+              linear-gradient(135deg, var(--herb-900) 0%, var(--herb-800) 45%, var(--herb-700) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(220, 174, 51, 0.08) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.leaf-decor {
+  position: absolute;
+  opacity: 0.16;
+  filter: blur(0.3px);
+  pointer-events: none;
+  animation: float-leaf 8s ease-in-out infinite;
+}
+
+@keyframes float-leaf {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(8deg); }
+}
+
+.gold-gradient-text {
+  background: linear-gradient(90deg, var(--gold-300), var(--gold-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+  color: #1c1305;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(201, 151, 31, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(201, 151, 31, 0.5);
+  filter: brightness(1.05);
+}
+
+.btn-outline-gold {
+  border: 2px solid var(--gold-400);
+  color: var(--gold-300);
+  transition: all 0.25s ease;
+}
+
+.btn-outline-gold:hover {
+  background: var(--gold-400);
+  color: #1c1305;
+  transform: translateY(-3px);
+}
+
+.btn-herb {
+  background: linear-gradient(135deg, var(--herb-600), var(--herb-800));
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(22, 64, 42, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-herb:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(22, 64, 42, 0.5);
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.card-premium {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid rgba(41, 104, 68, 0.08);
+  box-shadow: 0 4px 14px rgba(13, 46, 29, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(13, 46, 29, 0.16);
+  border-color: rgba(201, 151, 31, 0.35);
+}
+
+.icon-badge {
+  background: linear-gradient(135deg, var(--herb-600), var(--herb-800));
+  color: var(--gold-300);
+  width: 64px;
+  height: 64px;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(22, 64, 42, 0.3);
+}
+
+.product-image-placeholder {
+  background: linear-gradient(135deg, var(--herb-500), var(--herb-800));
+}
+
+.section-tag {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold-600);
+}
+
+/* ==========================================================================
+   TESTIMONIALS SLIDER
+   ========================================================================== */
+
+.testimonial-slide {
+  display: none;
+  animation: fadeSlide 0.6s ease;
+}
+
+.testimonial-slide.active {
+  display: block;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.testimonial-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(41, 104, 68, 0.25);
+  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.testimonial-dot.active {
+  background: var(--gold-500);
+  transform: scale(1.3);
+}
+
+/* ==========================================================================
+   FLOATING WHATSAPP BUTTON
+   ========================================================================== */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+  transition: transform 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.55);
+  animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  z-index: -1;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(1.7); opacity: 0; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+/* ==========================================================================
+   FORMS
+   ========================================================================== */
+
+.form-input {
+  width: 100%;
+  border: 1.5px solid #e3dcc9;
+  border-radius: 0.65rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 3px rgba(201, 151, 31, 0.18);
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--herb-800);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+/* ==========================================================================
+   ADMIN PANEL
+   ========================================================================== */
+
+.admin-sidebar-link {
+  transition: background 0.25s ease, padding-left 0.25s ease;
+}
+
+.admin-sidebar-link:hover,
+.admin-sidebar-link.active {
+  background: rgba(201, 151, 31, 0.15);
+  padding-left: 1.4rem;
+}
+
+.stat-card {
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(13, 46, 29, 0.1);
+  transition: transform 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+table.admin-table thead {
+  background: var(--herb-800);
+  color: #fff;
+}
+
+table.admin-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+table.admin-table tbody tr:hover {
+  background: rgba(95, 163, 121, 0.08);
+}
+
+/* ==========================================================================
+   FLASH MESSAGES
+   ========================================================================== */
+
+.flash-message {
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   MISC
+   ========================================================================== */
+
+.divider-gold {
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-400), var(--gold-600));
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--herb-600);
+  border-radius: 10px;
+}
+
+.bg-pattern-light {
+  background-image: radial-gradient(circle, rgba(41, 104, 68, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+}
